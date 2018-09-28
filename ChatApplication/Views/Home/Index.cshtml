@@ -1,0 +1,50 @@
+﻿@model ChatApplication.Models.IndexViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+<h2>Index</h2>
+
+<div class="form-group">
+
+    <select id="users" name="users" asp-items="@Model.Users" class="form-select"></select>
+    <div class="input-group">
+        <input id="js-message" class="form-control" />
+        <span class="input-group-btn">
+            <button class="btn btn-primary mb-2 js-toggle-following">Send message</button>
+        </span>
+    </div>
+    <div class="messagebox">
+        <div class="messagetext">
+            <span class="text-muted">Messages:</span>
+        </div>
+        <div class="messages">
+            <div id="messagecontainer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $(".js-toggle-following").click(function (e) {
+            $.post("/api/Chat", { message: $("#js-message").val(), routingKey: $("#users").val() })
+                .done(function () {
+                    var data = $("#messagecontainer").html();
+                    $("#messagecontainer").html("Me (to " + $("#users").val() + "): " + $("#js-message").val() +"<br>"+data );
+                })
+                .fail(function () {
+                    alert("Something went wrong");
+                });
+        });
+        setInterval(function (e) {
+            $.getJSON("/api/Chat", function (notifications) {
+                if (notifications.length == 0) return;
+
+                var data = $("#messagecontainer").html();
+                $("#messagecontainer").html("Friend: " + notifications.message + "<br>" + data);
+
+            });
+        }, 1000);
+    });
+</script>
