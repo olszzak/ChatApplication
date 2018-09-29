@@ -1,21 +1,15 @@
-﻿using ChatApplication.Models;
-using Microsoft.AspNetCore.Identity;
+﻿using AuthorizationService;
+using AuthorizationService.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ChatApplication.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        private readonly IAccount _account;
+        public AccountController(IAccount account)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
+            _account = account;
         }
 
         [HttpGet]
@@ -27,7 +21,7 @@ namespace ChatApplication.Controllers
         [HttpPost]
         public IActionResult Login([FromForm] LoginViewModel fi_loginInfo)
         {
-            var result = _signInManager.PasswordSignInAsync(fi_loginInfo.username, fi_loginInfo.password, true, false).Result;
+            var result = _account.SignIn(fi_loginInfo);
             if (result.Succeeded)
             {
                 return Json(new { Message = "“Login success" });
@@ -39,8 +33,8 @@ namespace ChatApplication.Controllers
         }
         public IActionResult Register([FromBody] LoginViewModel fi_loginInfo)
         {
-            var user = new ApplicationUser() { UserName = fi_loginInfo.username, Email = fi_loginInfo.username };
-            var result = _userManager.CreateAsync(user, fi_loginInfo.password).Result;
+            var user = _account.Register(fi_loginInfo);
+            var result = _account.Create(user, fi_loginInfo) ;
             if (result.Succeeded)
             {
                 return Json(new { Message = "User Created" });

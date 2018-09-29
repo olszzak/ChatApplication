@@ -1,0 +1,12 @@
+C:\Users\Dawid\Documents\ChatApplication\MessagesService\bin\Debug\netcoreapp2.0\MessagesService.deps.json
+C:\Users\Dawid\Documents\ChatApplication\MessagesService\bin\Debug\netcoreapp2.0\MessagesService.dll
+C:\Users\Dawid\Documents\ChatApplication\MessagesService\bin\Debug\netcoreapp2.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\Dawid\Documents\ChatApplication\MessagesService\bin\Debug\netcoreapp2.0\Microsoft.EntityFrameworkCore.xml
+C:\Users\Dawid\Documents\ChatApplication\MessagesService\obj\Debug\netcoreapp2.0\MessagesService.csprojAssemblyReference.cache
+C:\Users\Dawid\Documents\ChatApplication\MessagesService\obj\Debug\netcoreapp2.0\MessagesService.csproj.CoreCompileInputs.cache
+C:\Users\Dawid\Documents\ChatApplication\MessagesService\obj\Debug\netcoreapp2.0\MessagesService.AssemblyInfoInputs.cache
+C:\Users\Dawid\Documents\ChatApplication\MessagesService\obj\Debug\netcoreapp2.0\MessagesService.AssemblyInfo.cs
+C:\Users\Dawid\Documents\ChatApplication\MessagesService\obj\Debug\netcoreapp2.0\MessagesService.csproj.CopyComplete
+C:\Users\Dawid\Documents\ChatApplication\MessagesService\bin\Debug\netcoreapp2.0\MessagesService.pdb
+C:\Users\Dawid\Documents\ChatApplication\MessagesService\obj\Debug\netcoreapp2.0\MessagesService.dll
+C:\Users\Dawid\Documents\ChatApplication\MessagesService\obj\Debug\netcoreapp2.0\MessagesService.pdb

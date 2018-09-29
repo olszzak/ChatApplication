@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using ChatApplication.Models;
-using ChatApplication.RabbitMq;
+﻿using AuthorizationService;
+using MessagesService;
+using MessagesService.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace ChatApplication.Controllers.Api
 {
@@ -16,23 +11,23 @@ namespace ChatApplication.Controllers.Api
     [Route("api/Chat")]
     public class ChatController : Controller
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
-        public ChatController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        private readonly IRabbitMqClient _rabbitMqClient;
+        private readonly IAccount _account;
+        public ChatController(IAccount account, IRabbitMqClient rabbitMqClient)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
-        }
+            _rabbitMqClient = rabbitMqClient;
+            _account = account;
+    }
 
         [HttpPost]
         public ActionResult Send(ReceivedMessage rm)
         {
-            var myUserName = _userManager.GetUserName(HttpContext.User);
+            var myUserName = _account.GetUserName(HttpContext);
             
             try
             {
-                var rabbit = new RabbitMqClient();
-                rabbit.Send(rabbit.CreateConnection(), rm.RoutingKey, rm.Message);
+              //  var rabbit = new RabbitMqClient();
+                _rabbitMqClient.Send(_rabbitMqClient.CreateConnection(), rm.RoutingKey, rm.Message);
 
                 return Ok();
             }
@@ -46,9 +41,9 @@ namespace ChatApplication.Controllers.Api
         {
             try
             {
-                var userName = _userManager.GetUserName(HttpContext.User);
-                var rabbit = new RabbitMqClient();
-                var received = rabbit.Receive(rabbit.CreateConnection(), userName);
+                var userName = _account.GetUserName(HttpContext);
+               // var rabbit = new RabbitMqClient();
+                var received = _rabbitMqClient.Receive(_rabbitMqClient.CreateConnection(), userName);
 
                 return received;
             }

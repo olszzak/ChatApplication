@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AuthorizationService;
+using AuthorizationService.Data;
+using AuthorizationService.Models;
 using AutoMapper;
-using ChatApplication.Data;
-using ChatApplication.Models;
+using MessagesService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
@@ -49,6 +46,8 @@ namespace ChatApplication
 
             var mapper = config.CreateMapper();
             services.AddSingleton(mapper);
+            services.AddScoped<IRabbitMqClient, RabbitMqClient>();
+            services.AddScoped<IAccount, Account>();
             services.AddMvc();
         }
 

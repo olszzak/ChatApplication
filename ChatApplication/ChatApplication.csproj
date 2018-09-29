@@ -20,4 +20,9 @@
     <PackageReference Include="RabbitMQ.Client" Version="5.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AuthorizationService\AuthorizationService.csproj" />
+    <ProjectReference Include="..\MessagesService\MessagesService.csproj" />
+  </ItemGroup>
+
 </Project>

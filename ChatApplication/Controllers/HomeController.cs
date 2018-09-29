@@ -1,38 +1,29 @@
-﻿using AutoMapper;
-using ChatApplication.Models;
-using ChatApplication.RabbitMq;
+﻿using AuthorizationService;
+using AuthorizationService.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace ChatApplication.Controllers
 {
     public class HomeController : Controller
     {
         private readonly IMapper _mapper;
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IAccount _account;
 
-        public HomeController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IMapper mapper)
+        public HomeController(IAccount account, IMapper mapper)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
+            _account = account;
             _mapper = mapper;
         }
 
         [Authorize]
         public ActionResult Index()
         {
-            var myUserName = _userManager.GetUserName(HttpContext.User);
+            var myUserName = _account.GetUserName(HttpContext);
 
-            var users = _userManager.Users.Where(u=>u.UserName != myUserName).ToList();
+            var users = _account.GetOtherUsers(HttpContext, myUserName);
             var viewModel = new IndexViewModel();
             
             foreach (var item in users)
