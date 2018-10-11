@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <!-- TODO BP: ten folder nie istnieje -->
   <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>

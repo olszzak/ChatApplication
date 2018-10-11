@@ -1,4 +1,5 @@
-﻿using AuthorizationService;
+﻿using System.Linq;
+using AuthorizationService;
 using AuthorizationService.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -9,6 +10,7 @@ namespace ChatApplication.Controllers
 {
     public class HomeController : Controller
     {
+        // TODO BP: nigdzie tego mappera nie wykorzystujesz
         private readonly IMapper _mapper;
         private readonly IAccount _account;
 
@@ -25,7 +27,7 @@ namespace ChatApplication.Controllers
 
             var users = _account.GetOtherUsers(HttpContext, myUserName);
             var viewModel = new IndexViewModel();
-            
+
             foreach (var item in users)
             {
                 viewModel.Users.Add(new SelectListItem
