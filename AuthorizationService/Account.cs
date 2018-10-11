@@ -7,6 +7,7 @@ using System.Linq;
 
 namespace AuthorizationService
 {
+    // Kuba: Account to taka niezbyt fortunna nazwa w tym wypadku. Sugeruje bardziej, że to model
     public class Account : IAccount
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -25,7 +26,11 @@ namespace AuthorizationService
 
         public ApplicationUser Register([FromBody] LoginViewModel fi_loginInfo)
         {
-            return new ApplicationUser() { UserName = fi_loginInfo.username, Email = fi_loginInfo.username };
+            return new ApplicationUser()
+            {
+                UserName = fi_loginInfo.username,
+                Email = fi_loginInfo.username
+            };
         }
 
         public IdentityResult Create(ApplicationUser user, [FromBody] LoginViewModel fi_loginInfo)
@@ -33,10 +38,12 @@ namespace AuthorizationService
             return _userManager.CreateAsync(user, fi_loginInfo.password).Result;
         }
 
+        // Kuba: możesz ten argument nazwać normalnie "context". Będzie bardziej sugerował o co cho
         public string GetUserName(HttpContext cont)
         {
            return _userManager.GetUserName(cont.User);
         }
+        //
         public IEnumerable<ApplicationUser> GetOtherUsers(HttpContext cont, string myUserName)
         {
             return _userManager.Users.Where(u => u.UserName != myUserName).ToList();

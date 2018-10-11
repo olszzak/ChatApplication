@@ -22,8 +22,10 @@ namespace ChatApplication.Controllers
         public IActionResult Login([FromForm] LoginViewModel fi_loginInfo)
         {
             var result = _account.SignIn(fi_loginInfo);
+            // Kuba: Odstępy przed if'ami
             if (result.Succeeded)
             {
+                // Kuba: Jakiś dziki cudzysłów ci się wkradł w Message :D
                 return Json(new { Message = "“Login success" });
             }
             else
@@ -31,10 +33,12 @@ namespace ChatApplication.Controllers
                 return Json(new { Message = "Error Occurs" });
             }
         }
+        //
         public IActionResult Register([FromBody] LoginViewModel fi_loginInfo)
         {
             var user = _account.Register(fi_loginInfo);
-            var result = _account.Create(user, fi_loginInfo) ;
+            var result = _account.Create(user, fi_loginInfo);
+            // 
             if (result.Succeeded)
             {
                 return Json(new { Message = "User Created" });

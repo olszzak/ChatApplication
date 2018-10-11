@@ -39,6 +39,7 @@ namespace ChatApplication
                .AddEntityFrameworkStores<ApplicationDbContext>()
                .AddDefaultTokenProviders();
 
+            // Kuba: Konfiguracja Mappera powinna być raczej w osobnej klasie
             var config = new MapperConfiguration(c =>
             {
                 c.CreateMap<ApplicationUser, UserDto>();

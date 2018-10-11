@@ -15,6 +15,7 @@ namespace MessagesService
 
         public IConnection CreateConnection()
         {
+            // Kuba: Docelowo takie "wrażliwe" dane powinny znaleźć się w configu
             var factory = new ConnectionFactory { HostName = "localhost", UserName = "guest", Password = "guest" };
             return factory.CreateConnection();
         }

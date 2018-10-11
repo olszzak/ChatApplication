@@ -8,6 +8,7 @@ namespace AuthorizationService
 {
     public interface IAccount
     {
+        // Kuba: atrybuty [FromForm] i [FromBody] muszą być tylko w kontrolerach, z tego interfejsu i implementacji możesz je wywalić 
         Microsoft.AspNetCore.Identity.SignInResult SignIn([FromForm] LoginViewModel fi_loginInfo);
         ApplicationUser Register([FromBody] LoginViewModel fi_loginInfo);
         IdentityResult Create(ApplicationUser user, [FromBody] LoginViewModel fi_loginInfo);
