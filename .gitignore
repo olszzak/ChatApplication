@@ -1,0 +1,6 @@
+.idea
+.vs
+
+# TODO BP: jeszcze raz, plików wynikowych nie przechowujemy w repozytorium
+**/obj
+**/bin

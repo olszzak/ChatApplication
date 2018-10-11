@@ -964,7 +964,7 @@
       ]
     },
     "Microsoft.AspNet.Identity.Core/2.2.2": {
-      "sha512": "bWth+6XxppUzJzLiVh/0r85SWKFR4dCHse4RgJfM30BR6of5euR5Y6U+URdouFYWyaiTaU2ySTPhvvN07cn/oQ==",
+      "sha512": "DJNnLn/eElAudZqNUsQ8qQy3LlKnlQ/kBjl+Zi6Xvur/InJ6DZYCuTLV5mtNtDZ0egvpl/e/Q8MLlh+3te7tYw==",
       "type": "package",
       "path": "microsoft.aspnet.identity.core/2.2.2",
       "files": [
@@ -3477,23 +3477,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Dawid\\.nuget\\packages\\": {},
+    "C:\\Users\\bartek\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dawid\\Documents\\ChatApplication\\AuthorizationService\\AuthorizationService.csproj",
+      "projectUniqueName": "C:\\dev\\ChatApplication\\AuthorizationService\\AuthorizationService.csproj",
       "projectName": "AuthorizationService",
-      "projectPath": "C:\\Users\\Dawid\\Documents\\ChatApplication\\AuthorizationService\\AuthorizationService.csproj",
-      "packagesPath": "C:\\Users\\Dawid\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dawid\\Documents\\ChatApplication\\AuthorizationService\\obj\\",
+      "projectPath": "C:\\dev\\ChatApplication\\AuthorizationService\\AuthorizationService.csproj",
+      "packagesPath": "C:\\Users\\bartek\\.nuget\\packages\\",
+      "outputPath": "C:\\dev\\ChatApplication\\AuthorizationService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Dawid\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\bartek\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3501,7 +3501,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://www.myget.org/F/wojtpl2/api/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.0": {
